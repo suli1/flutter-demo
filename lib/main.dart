@@ -41,7 +41,7 @@ class MyHomePage extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[
           RaisedButton(
-            child: const Text("Layouts"),
+            child: const Text("Layout tutorial"),
             onPressed: () {
               Navigator.push(
                   context, MaterialPageRoute(builder: (context) => LayoutTutorialWidget()));
