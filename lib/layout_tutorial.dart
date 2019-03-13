@@ -28,11 +28,7 @@ class LayoutTutorialWidget extends StatelessWidget {
               ],
             ),
           ),
-          Icon(
-            Icons.star,
-            color: Colors.red[500],
-          ),
-          Text('41'),
+          FavoriteWidget(),
         ],
       ),
     );
@@ -83,6 +79,10 @@ class LayoutTutorialWidget extends StatelessWidget {
             titleSection,
             buttonSelection,
             textSelection,
+            Container(
+              margin: EdgeInsets.all(16),
+              child: TabboxA(),
+            )
         ],
         ),
       ),
@@ -113,5 +113,83 @@ class LayoutTutorialWidget extends StatelessWidget {
       ],
     );
   }
+}
+
+class FavoriteWidget extends StatefulWidget {
+  @override
+  State<StatefulWidget> createState() => _FavoriteWidgetState();
+}
+
+class _FavoriteWidgetState extends State<FavoriteWidget> {
+  bool _isFavorited = true;
+  int _favoriteCount = 41;
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      mainAxisSize: MainAxisSize.min,
+      children: <Widget>[
+        Container(
+          padding: EdgeInsets.all(0),
+          child: IconButton(
+              icon: (_isFavorited ? Icon(Icons.star) : Icon(Icons.star_border)),
+              color: Colors.red[500],
+              onPressed: _toggleFavorite),
+        ),
+        SizedBox(
+          width: 18,
+          child: Container(
+            child: Text('$_favoriteCount'),
+          ),
+        )
+      ],
+    );
+  }
+
+  void _toggleFavorite() =>
+      setState(() {
+        _isFavorited = !_isFavorited;
+        if (_isFavorited) {
+          _favoriteCount++;
+        } else {
+          _favoriteCount--;
+        }
+      });
+}
+
+class TabboxA extends StatefulWidget {
+  @override
+  State<StatefulWidget> createState() => _TabboxAState();
+}
+
+class _TabboxAState extends State<TabboxA> {
+  bool _active = false;
+
+  void _handleTab() =>
+      setState(() {
+        _active = !_active;
+      });
+
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: _handleTab,
+      child: Container(
+        width: 64,
+        height: 64,
+        decoration: BoxDecoration(
+            color: _active ? Colors.lightGreen[500] : Colors.grey[500]
+        ),
+        child: Center(
+            child: Text(
+              _active ? 'Activie' : 'Inactive',
+              style: TextStyle(fontSize: 14, color: Colors.white),
+            )),
+      ),
+
+    );
+  }
 
 }
+
