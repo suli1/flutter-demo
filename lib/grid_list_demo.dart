@@ -10,6 +10,8 @@ class Photo {
 }
 
 class GridDemo extends StatefulWidget {
+  static const routeName = '/grid';
+
   @override
   State<StatefulWidget> createState() => GridDemoState();
 }
@@ -57,6 +59,8 @@ class GridDemoState extends State<GridDemo> {
 }
 
 class ListDemo extends StatefulWidget {
+  static const routeName = '/list';
+
   @override
   State<StatefulWidget> createState() => ListDemoState();
 }

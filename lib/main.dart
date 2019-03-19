@@ -32,8 +32,8 @@ class MyApp extends StatelessWidget {
       initialRoute: '/',
       routes: {
         LayoutTutorialWidget.routeName: (context) => LayoutTutorialWidget(),
-        '/grid': (context) => GridDemo(),
-        '/list': (context) => ListDemo(),
+        GridDemo.routeName: (context) => GridDemo(),
+        ListDemo.routeName: (context) => ListDemo(),
         SelectionScreen.routeName: (context) => SelectionScreen(),
       },
     );
@@ -57,13 +57,13 @@ class MyHomePage extends StatelessWidget {
           RaisedButton(
             child: const Text("Grid View"),
             onPressed: () {
-              Navigator.pushNamed(context, '/grid');
+              Navigator.pushNamed(context, GridDemo.routeName);
             },
           ),
           RaisedButton(
             child: const Text("List View"),
             onPressed: () {
-              Navigator.pushNamed(context, '/list');
+              Navigator.pushNamed(context, ListDemo.routeName);
             },
           ),
           RaisedButton(
