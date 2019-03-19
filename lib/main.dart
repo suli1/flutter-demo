@@ -1,5 +1,6 @@
 import 'package:demo/grid_list_demo.dart';
 import 'package:demo/layout_tutorial.dart';
+import 'package:demo/navigator_tutorial.dart';
 import 'package:flutter/material.dart';
 
 void main() => runApp(MyApp());
@@ -28,6 +29,13 @@ class MyApp extends StatelessWidget {
         ),
         body: MyHomePage(),
       ),
+      initialRoute: '/',
+      routes: {
+        LayoutTutorialWidget.routeName: (context) => LayoutTutorialWidget(),
+        '/grid': (context) => GridDemo(),
+        '/list': (context) => ListDemo(),
+        SelectionScreen.routeName: (context) => SelectionScreen(),
+      },
     );
   }
 }
@@ -43,20 +51,28 @@ class MyHomePage extends StatelessWidget {
           RaisedButton(
             child: const Text("Layout tutorial"),
             onPressed: () {
-              Navigator.push(
-                  context, MaterialPageRoute(builder: (context) => LayoutTutorialWidget()));
+              Navigator.pushNamed(context, LayoutTutorialWidget.routeName);
             },
           ),
           RaisedButton(
             child: const Text("Grid View"),
             onPressed: () {
-              Navigator.push(context, MaterialPageRoute(builder: (context) => GridDemo()));
+              Navigator.pushNamed(context, '/grid');
             },
           ),
           RaisedButton(
             child: const Text("List View"),
             onPressed: () {
-              Navigator.push(context, MaterialPageRoute(builder: (context) => ListDemo()));
+              Navigator.pushNamed(context, '/list');
+            },
+          ),
+          RaisedButton(
+            child: const Text("Selection"),
+            onPressed: () async {
+              final result = await Navigator.pushNamed(context, SelectionScreen.routeName);
+              Scaffold.of(context)
+                ..removeCurrentSnackBar()
+                ..showSnackBar(SnackBar(content: Text('$result')));
             },
           ),
         ],

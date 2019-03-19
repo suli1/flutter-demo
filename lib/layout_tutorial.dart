@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 class LayoutTutorialWidget extends StatelessWidget {
+  static const routeName = '/layout';
+
   @override
   Widget build(BuildContext context) {
     Widget titleSection = Container(
