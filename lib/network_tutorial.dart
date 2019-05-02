@@ -35,7 +35,7 @@ Future<Post> fetchPost() async {
 }
 
 class FetchPostWidget extends StatelessWidget {
-  static const routeName = 'FetchPost';
+  static const routeName = '/fetchPost';
 
   final Future<Post> post;
 

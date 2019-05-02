@@ -1,3 +1,4 @@
+import 'package:demo/database_tutorial.dart';
 import 'package:demo/grid_list_demo.dart';
 import 'package:demo/layout_tutorial.dart';
 import 'package:demo/navigator_tutorial.dart';
@@ -38,6 +39,7 @@ class MyApp extends StatelessWidget {
         SelectionScreen.routeName: (context) => SelectionScreen(),
         FetchPostWidget.routeName: (context) => FetchPostWidget(post: fetchPost()),
         FetchPhotosWidget.routeName: (context) => FetchPhotosWidget(title: "Fetch photos",),
+        DatabaseWidget.routeName: (context) => DatabaseWidget(database: database()),
       },
     );
   }
@@ -88,6 +90,12 @@ class MyHomePage extends StatelessWidget {
             child: const Text("Fetch photos"),
             onPressed: () {
               Navigator.pushNamed(context, FetchPhotosWidget.routeName);
+            },
+          ),
+          RaisedButton(
+            child: const Text("Database"),
+            onPressed: () {
+              Navigator.pushNamed(context, DatabaseWidget.routeName);
             },
           ),
         ],
