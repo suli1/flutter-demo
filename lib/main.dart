@@ -1,6 +1,7 @@
 import 'package:demo/grid_list_demo.dart';
 import 'package:demo/layout_tutorial.dart';
 import 'package:demo/navigator_tutorial.dart';
+import 'package:demo/network_tutorial.dart';
 import 'package:flutter/material.dart';
 
 void main() => runApp(MyApp());
@@ -35,6 +36,8 @@ class MyApp extends StatelessWidget {
         GridDemo.routeName: (context) => GridDemo(),
         ListDemo.routeName: (context) => ListDemo(),
         SelectionScreen.routeName: (context) => SelectionScreen(),
+        FetchPostWidget.routeName: (context) => FetchPostWidget(post: fetchPost()),
+        FetchPhotosWidget.routeName: (context) => FetchPhotosWidget(title: "Fetch photos",),
       },
     );
   }
@@ -73,6 +76,18 @@ class MyHomePage extends StatelessWidget {
               Scaffold.of(context)
                 ..removeCurrentSnackBar()
                 ..showSnackBar(SnackBar(content: Text('$result')));
+            },
+          ),
+          RaisedButton(
+            child: const Text("Fetch data"),
+            onPressed: () {
+              Navigator.pushNamed(context, FetchPostWidget.routeName);
+            },
+          ),
+          RaisedButton(
+            child: const Text("Fetch photos"),
+            onPressed: () {
+              Navigator.pushNamed(context, FetchPhotosWidget.routeName);
             },
           ),
         ],
