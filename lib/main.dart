@@ -1,11 +1,15 @@
 import 'package:demo/database_tutorial.dart';
 import 'package:demo/grid_list_demo.dart';
+import 'package:demo/json_serialize.dart';
 import 'package:demo/layout_tutorial.dart';
 import 'package:demo/navigator_tutorial.dart';
 import 'package:demo/network_tutorial.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 
-void main() => runApp(MyApp());
+void main() {
+  runApp(MyApp());
+}
 
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.
@@ -40,6 +44,7 @@ class MyApp extends StatelessWidget {
         FetchPostWidget.routeName: (context) => FetchPostWidget(post: fetchPost()),
         FetchPhotosWidget.routeName: (context) => FetchPhotosWidget(title: "Fetch photos",),
         DatabaseWidget.routeName: (context) => DatabaseWidget(database: database()),
+        JsonWidget.routeName: (context) => JsonWidget(),
       },
     );
   }
@@ -96,6 +101,12 @@ class MyHomePage extends StatelessWidget {
             child: const Text("Database"),
             onPressed: () {
               Navigator.pushNamed(context, DatabaseWidget.routeName);
+            },
+          ),
+          RaisedButton(
+            child: const Text("Json"),
+            onPressed: () {
+              Navigator.pushNamed(context, JsonWidget.routeName);
             },
           ),
         ],
